@@ -1,0 +1,220 @@
+/* ===== GO — by twagirumukiza — design tokens =====
+   Palette : encre noire + bois du goban + laque rouge (hanko)
+   Display : Shippori Mincho (serif japonisant) — Body : Inter
+*/
+:root{
+  --bg:#0b0a08;
+  --bg-grain:#100e0a;
+  --panel:#16140fcc;
+  --panel-solid:#171510;
+  --panel-2:#1e1a13;
+  --line:#ffffff14;
+  --wood:#c9924f;
+  --wood-light:#e7b56d;
+  --gold:#cf9f56;
+  --gold-soft:#cf9f5622;
+  --ink:#f3ede1;
+  --muted:#a89d8a;
+  --muted-2:#78705f;
+  --hanko:#a13327;
+  --hanko-light:#c94c3d;
+  --radius:14px;
+  --radius-lg:22px;
+  --shadow:0 18px 46px #000a;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}
+body{
+  margin:0;color:var(--ink);min-height:100vh;
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:
+    radial-gradient(1100px 700px at 18% -10%, #241d12 0%, transparent 60%),
+    radial-gradient(900px 600px at 100% 0%, #1c150e 0%, transparent 55%),
+    var(--bg);
+  background-attachment:fixed;
+}
+::selection{background:var(--gold-soft);color:var(--ink)}
+:focus-visible{outline:2px solid var(--wood-light);outline-offset:2px;border-radius:8px}
+
+/* ---------- Header ---------- */
+header{
+  height:80px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 max(18px,calc((100vw - 1000px)/2));
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(6px);
+}
+.brand{display:flex;align-items:center;gap:14px}
+.seal{
+  width:40px;height:40px;display:grid;place-items:center;flex:none;
+  color:var(--ink);background:linear-gradient(160deg,#221c14,#141009);
+  border:1px solid var(--gold-soft);border-radius:9px;
+  font-family:'Shippori Mincho',serif;font-size:22px;font-weight:700;
+  box-shadow:inset 0 0 0 1px #ffffff08, 0 6px 16px #0007;
+}
+h1{margin:0;font-family:'Shippori Mincho',serif;font-weight:700;font-size:24px;letter-spacing:.14em;color:var(--gold-light,var(--wood-light))}
+header small{display:block;margin-top:2px;color:var(--muted-2);font-size:11px;letter-spacing:.05em}
+#menuBtn{font-size:20px;background:transparent;border:1px solid var(--line);width:44px;height:44px;padding:0;border-radius:10px}
+#menuBtn:hover{border-color:var(--gold-soft)}
+
+/* ---------- Generic controls ---------- */
+button,select,input{font:inherit}
+button{
+  border:1px solid var(--line);background:#221f19;color:var(--ink);
+  border-radius:11px;padding:12px 18px;cursor:pointer;
+  min-height:46px;font-weight:600;font-size:14.5px;
+  transition:transform .12s ease, border-color .15s ease, background .15s ease;
+}
+button:hover{border-color:var(--gold-soft);background:#28241c}
+button:active{transform:scale(.97)}
+.primary{
+  background:linear-gradient(160deg,var(--wood-light),var(--wood));
+  color:#1a1206;border:0;font-weight:700;letter-spacing:.01em;
+  box-shadow:0 10px 26px #c9924f33;
+}
+.primary:hover{filter:brightness(1.06)}
+
+main{max-width:1000px;margin:auto;padding:26px 18px 60px}
+.panel{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow);
+  backdrop-filter:blur(8px);
+}
+
+/* ---------- Setup ---------- */
+.setup{max-width:640px;margin:5vh auto}
+.setup h2{
+  font-family:'Shippori Mincho',serif;font-weight:700;font-size:28px;margin:0 0 4px;
+  color:var(--ink);
+}
+.setup h2::after{content:'';display:block;width:46px;height:2px;background:var(--hanko);margin-top:10px;border-radius:2px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0 6px}
+label{color:var(--muted);font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;font-weight:600}
+select,input{
+  display:block;width:100%;margin-top:8px;padding:13px 14px;
+  background:var(--panel-2);border:1px solid var(--line);border-radius:10px;
+  color:var(--ink);font-size:15px;min-height:46px;
+  appearance:none;-webkit-appearance:none;
+}
+select{
+  background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 18px) center,calc(100% - 13px) center;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;
+}
+select:focus,input:focus{border-color:var(--wood-light)}
+.setup .primary{width:100%;padding:15px;margin-top:20px;font-size:15.5px}
+.hidden{display:none!important}
+.gridTail{display:none}
+
+.onlineSetup{border-top:1px solid var(--line);margin:8px 0 4px;padding-top:18px}
+.onlineBtns{display:flex;gap:10px;margin-bottom:14px}
+.onlineBtns button{flex:1}
+.shareBox{display:grid;gap:12px;margin-top:14px;padding:16px;border:1px solid var(--gold-soft);border-radius:var(--radius);background:#00000022}
+.shareBox small{color:var(--muted)}
+.shareBtns{display:flex;gap:10px}
+.shareBtns button{flex:1}
+.hanko{
+  justify-self:start;font-family:'Shippori Mincho',serif;font-weight:700;letter-spacing:.12em;
+  color:var(--hanko-light);border:2px solid var(--hanko);border-radius:9px;
+  padding:8px 14px;font-size:19px;background:#a1332711;
+}
+
+/* ---------- Game status ---------- */
+.status{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin-bottom:14px}
+.player{display:flex;gap:11px;align-items:center;opacity:.5;transition:opacity .2s ease}
+.player:last-child{justify-content:flex-end;text-align:right}
+.player.active{opacity:1}
+.player b{font-weight:600}
+.player small{display:block;color:var(--muted);font-size:11px;margin-top:1px}
+.stone{width:30px;height:30px;border-radius:50%;display:block;box-shadow:inset -5px -6px 8px #0006,0 2px 5px #0008;flex:none}
+.black{background:radial-gradient(circle at 35% 30%,#555,#050505 65%)}
+.white{background:radial-gradient(circle at 35% 30%,#fff,#cfcac0 70%)}
+.turn{color:var(--wood-light);font-weight:700;font-size:12.5px;letter-spacing:.04em;text-align:center}
+.onlineStatus{display:block;text-align:center;color:var(--hanko-light);font-size:12.5px;margin:-6px 0 12px;font-weight:600}
+
+.boardWrap{display:flex;justify-content:center;overflow:auto;padding:2px}
+canvas{touch-action:none;border-radius:10px;box-shadow:0 24px 60px #000a;max-width:100%;height:auto;transition:transform .08s ease}
+canvas.illegal{animation:shake .32s ease}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-6px)}
+  40%{transform:translateX(5px)}
+  60%{transform:translateX(-4px)}
+  80%{transform:translateX(3px)}
+}
+
+.actions{display:flex;justify-content:center;gap:10px;margin:18px 0 10px;flex-wrap:wrap}
+.actions button{min-width:120px}
+.ghostQuit{
+  display:block;margin:0 auto 16px;background:transparent;border:0;
+  color:var(--muted);font-size:13px;font-weight:600;text-decoration:underline;
+  text-underline-offset:3px;text-decoration-color:transparent;
+  min-height:auto;padding:8px 10px;transition:color .15s ease, text-decoration-color .15s ease;
+}
+.ghostQuit:hover{color:var(--hanko-light);text-decoration-color:var(--hanko-light)}
+.hint{text-align:center;color:var(--muted);font-size:13px;transition:color .15s ease}
+.hint.hintAlert{color:var(--hanko-light);font-weight:600}
+
+/* ---------- Drawer ---------- */
+.drawer{position:fixed;inset:0;background:#000c;z-index:20;display:flex;justify-content:flex-end}
+.drawerBox{width:min(420px,92vw);height:100%;background:var(--panel-solid);padding:30px;overflow:auto;border-left:1px solid var(--line)}
+.drawerBox>button{float:right}
+.drawerBox h2{font-family:'Shippori Mincho',serif;color:var(--wood-light);font-size:27px;margin-top:8px}
+.drawerBox p{line-height:1.7;color:#d0cbc1;font-size:14.5px}
+.toggle{display:flex;align-items:center;gap:8px;color:var(--muted);cursor:pointer}
+.toggle input{display:inline;width:auto;min-height:auto}
+
+/* ---------- Result overlay ---------- */
+.overlay{position:fixed;inset:0;background:#000c;z-index:30;display:grid;place-items:center;padding:20px}
+.resultBox{
+  text-align:center;background:var(--panel-solid);border:1px solid var(--gold-soft);
+  border-radius:24px;padding:38px 32px;width:min(440px,95vw);position:relative;overflow:hidden;
+}
+.winSeal{
+  width:60px;height:60px;margin:0 auto 14px;display:grid;place-items:center;
+  border:2px solid var(--hanko);color:var(--hanko-light);border-radius:12px;
+  font-family:'Shippori Mincho',serif;font-size:28px;font-weight:700;
+  transform:rotate(-3deg);background:#a1332711;
+}
+.resultBox h2{font-family:'Shippori Mincho',serif;color:var(--wood-light);font-size:32px;margin:0 0 10px}
+.resultBox p{white-space:pre-line;line-height:1.75;color:#d8d2c6;font-size:14.5px}
+.resultActions{display:flex;gap:10px;margin-top:22px}
+.resultActions button{flex:1}
+.particle{position:absolute;top:-20px;width:7px;height:13px;background:var(--wood-light);animation:fall 2.5s linear forwards}
+@keyframes fall{to{transform:translateY(520px) rotate(720deg);opacity:0}}
+
+/* ---------- Capture toast ---------- */
+.captureNotice{
+  position:fixed;left:50%;top:16%;transform:translateX(-50%);z-index:40;
+  background:#12110fed;border:1px solid var(--gold-soft);border-radius:16px;
+  padding:16px 26px;text-align:center;box-shadow:0 20px 55px #000c;animation:pop .22s ease;
+}
+.captureNotice b{display:block;color:var(--hanko-light);font-size:22px;letter-spacing:.16em;font-family:'Shippori Mincho',serif}
+.captureNotice span{display:block;margin-top:5px;color:#eee;font-size:13.5px}
+@keyframes pop{from{transform:translateX(-50%) scale(.75);opacity:0}}
+
+/* ---------- Responsive ---------- */
+@media(max-width:650px){
+  header{padding:0 14px}
+  main{padding:16px 12px 44px}
+  .grid{grid-template-columns:1fr}
+  .status{grid-template-columns:1fr 1fr}
+  .turn{grid-column:1/-1;grid-row:2}
+  .panel{padding:14px}
+  .stone{width:24px;height:24px}
+  h1{font-size:20px}
+}
+@media(orientation:landscape) and (max-height:700px){
+  body{min-height:max-content;overflow-y:auto!important}
+  header{height:56px}
+  main{padding-top:10px;padding-bottom:34px;min-height:max-content}
+  #game{min-height:max-content}
+  .status{margin-bottom:10px}
+  .boardWrap{overflow:visible}
+  .actions{margin:10px 0}
+  .hint{margin-bottom:26px}
+  .setup{margin:10px auto 40px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}

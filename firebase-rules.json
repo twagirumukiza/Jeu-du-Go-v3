@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "goRooms": {
+      "$roomId": {
+        ".read": "auth != null && data.child('players').child(auth.uid).exists() || auth != null && data.child('status').val() === 'waiting'",
+        ".write": "auth != null && ((!data.exists() && newData.child('hostId').val() === auth.uid && newData.child('players').child(auth.uid).exists()) || (data.exists() && (data.child('players').child(auth.uid).exists() || (data.child('status').val() === 'waiting' && newData.child('players').child(auth.uid).exists()))))",
+        "players": {
+          "$uid": {
+            ".validate": "newData.hasChildren(['name','color','connected']) && newData.child('name').isString() && newData.child('name').val().length > 0 && newData.child('name').val().length <= 18 && (newData.child('color').val() === 1 || newData.child('color').val() === 2) && newData.child('connected').isBoolean()"
+          }
+        },
+        "size": { ".validate": "newData.val() === 9 || newData.val() === 13 || newData.val() === 19" },
+        "hostId": { ".validate": "newData.isString()" },
+        "status": { ".validate": "newData.val() === 'waiting' || newData.val() === 'playing' || newData.val() === 'finished'" }
+      }
+    }
+  }
+}
